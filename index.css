@@ -1,0 +1,21 @@
+
+main {
+    width: 100%;
+}
+
+.card {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0;
+}
+
+.space {
+    border: solid black thin;
+}
+
+.space img {
+    width: 100%;
+}

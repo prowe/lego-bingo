@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        @import "index.css";  
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 
     <main id="app">
-        <card-space brick-id='red-6'/>
+        <!-- <card-space brick-id='red-6'/> -->
+
+        <bingo-card />
     </main>
 
     <script>
+        const ALL_BRICK_IDS = [
+            'red-6',
+            'lime-8',
+            'grey-4',
+            'yellow-2'
+        ];
+
+        function shuffle(a) {
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
         Vue.component('card-space', {
             props: ['brickId'],
             template: `
@@ -24,6 +44,21 @@
                 getBrickImageSrc() {
                     return `bricks/${this.brickId}.jpg`;
                 } 
+            }
+        });
+
+        Vue.component('bingo-card', {
+            template: `
+                <div class='card'>
+                    <card-space v-for='(b, index) in bricks' :brick-id='b' :key='index'/>
+                </div>
+            `,
+            data() {
+                bricks = [...ALL_BRICK_IDS];
+                shuffle(bricks);
+                return {
+                    bricks
+                };
             }
         });
 
