@@ -3,13 +3,30 @@ main {
     width: 100%;
 }
 
+@media print {
+    .card {
+        page-break-after: always;
+    }
+    .card:last-child {
+        page-break-after: avoid;
+    }
+}
+
 .card {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20em;
     width: 400px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 0;
+}
+
+.card H2 {
+    text-align: center;
+    font-size: 75pt;
+    padding: 0;
+    margin: 0;
 }
 
 .space {

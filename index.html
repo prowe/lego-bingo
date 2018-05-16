@@ -9,13 +9,17 @@
 <body>
 
     <main id="app">
-        <!-- <card-space brick-id='red-6'/> -->
-
-        <bingo-card />
+        <bingo-card v-for="(c, i) in cardCount" :key="i" />
     </main>
 
     <script>
-        const ALL_BRICK_IDS = [
+        const ALL_BRICK_IDS = Array.from(new Set([
+            'orange-4',
+            'red-2',
+            'blue-16',
+            'green-2',
+            'orange-2',
+            'blue-1',
             'blue-2',
             'blue-4',
             'blue-8',
@@ -23,9 +27,11 @@
             'grey-4',
             'grey-8',
             'lime-8',
+            'purple-8',
             'red-6',
+            'white-8',
             'yellow-2',
-        ];
+        ]));
 
         function shuffle(a) {
             for (let i = a.length - 1; i > 0; i--) {
@@ -55,14 +61,16 @@
         Vue.component('bingo-card', {
             template: `
                 <div class='card'>
+                    <h2 v-for='(h,i) in headerChars' :key="i">{{h}}</h2>
                     <card-space v-for='(b, index) in bricks' :brick-id='b' :key='index'/>
                 </div>
             `,
             data() {
-                bricks = [...ALL_BRICK_IDS];
+                bricks = [...ALL_BRICK_IDS].slice(0, 16);
                 shuffle(bricks);
                 return {
-                    bricks
+                    bricks,
+                    headerChars: Array.from('LEGO')
                 };
             }
         });
@@ -70,6 +78,7 @@
         var app = new Vue({
             el: '#app',
             data: {
+                cardCount: 20
             }
         })
     </script>
