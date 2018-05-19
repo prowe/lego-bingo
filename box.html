@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        canvas { 
+            border: 1px solid black; 
+            width: 100%;
+        }
+    </style>
+    <script>
+        function drawCanvas() {
+            const canvas = document.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.lineJoin = 'miter';
+
+            // cutline
+            ctx.beginPath();
+            ctx.moveTo(25, 0);
+            ctx.lineTo(45, 0);
+            ctx.lineTo(45, 5);
+            ctx.lineTo(35, 5); //top cut
+            ctx.moveTo(45, 5);
+            ctx.lineTo(45, 35);
+            ctx.lineTo(45, 20);
+            ctx.lineTo(65, 20);
+            ctx.lineTo(65, 25);
+            ctx.lineTo(55, 25);
+            ctx.moveTo(65, 25);
+            ctx.lineTo(65, 35);
+            ctx.lineTo(70, 35);
+            ctx.lineTo(70, 55);
+            ctx.lineTo(65, 55);
+            ctx.lineTo(65, 65);
+            ctx.lineTo(55, 65);
+            ctx.moveTo(65, 65);
+            ctx.lineTo(65, 70);
+            ctx.lineTo(45, 70);
+            ctx.lineTo(45, 55);
+            ctx.lineTo(45, 90); //bottom right corner
+            ctx.lineTo(25, 90);
+            ctx.lineTo(25, 85);
+            ctx.lineTo(35, 85);
+            ctx.moveTo(25, 85);
+            ctx.lineTo(25, 55);
+            ctx.lineTo(25, 65);
+            ctx.lineTo(15, 65);
+            ctx.moveTo(25, 65);
+            ctx.lineTo(25, 70);
+            ctx.lineTo(5, 70);
+            ctx.lineTo(5, 55);
+            ctx.lineTo(0, 55);
+            ctx.lineTo(0, 35);
+            ctx.lineTo(5, 35);
+            ctx.lineTo(5, 20); //top left corner
+            ctx.lineTo(25, 20);
+            ctx.lineTo(25, 25);
+            ctx.lineTo(15, 25);
+            ctx.moveTo(25, 25);
+            ctx.lineTo(25, 35);
+            ctx.lineTo(25, 0);
+
+            ctx.stroke();
+
+            ctx.setLineDash([4, 2]);
+            ctx.moveTo(25, 15);
+            ctx.lineTo(45, 15);
+
+            ctx.moveTo(5, 35);
+            ctx.lineTo(65, 35);
+
+            ctx.moveTo(5, 35);
+            ctx.lineTo(5, 55);
+
+            ctx.moveTo(25, 35);
+            ctx.lineTo(25, 55);
+
+            ctx.moveTo(45, 35);
+            ctx.lineTo(45, 55);
+
+            ctx.moveTo(65, 35);
+            ctx.lineTo(25, 55);
+
+            ctx.moveTo(5, 55);
+            ctx.lineTo(65, 55);
+
+            ctx.moveTo(25, 75);
+            ctx.lineTo(45, 75);
+            ctx.stroke();
+        }
+    </script>
+</head>
+<body onload="drawCanvas();">
+    <canvas height="90" width="70">
+
+    </canvas>
+</body>
+</html>
